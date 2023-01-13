@@ -1,4 +1,4 @@
-import { $, Main } from './script.js';
+import Main, { $ } from './script.js';
 const main = new Main();
 
 $(document).ready(function() {

@@ -17,7 +17,48 @@ webpack.config.js
 const path = require('path');
 
 module.exports = {
-  entry: './wp-content/themes/base/assets/js/script.js',
+  entry: './wp-content/themes/base/assets/js/app.js',
+  output: {
+    path: path.resolve(__dirname, 'wp-content/themes/base/dist/'),
+    filename: 'script.js'
+  }
+};
+
+//////////////////////////////////////////
+3. In your package.json, add a new script for webpack:
+
+//////////////////////////////////////////
+package.json
+
+"scripts": {
+  "build": "webpack --watch"
+} 
+
+//////////////////////////////////////////
+
+4. Install Babel and the Babel loader for Webpack:
+npm install --save-dev @babel/core @babel/preset-env babel-loader
+
+5. Create a .babelrc file in the root of your project and add the following configuration:
+
+/////////////////////////////////////////
+.babelrc
+
+{
+    "presets": [
+        "@babel/preset-env"
+    ]
+}
+
+////////////////////////////////////////
+
+6. In your Webpack configuration file, add the babel-loader to the list of loaders:
+
+////////////////////////////////////////
+webpack.config.js
+
+module.exports = {
+  entry: './wp-content/themes/base/assets/js/app.js',
   output: {
     path: path.resolve(__dirname, 'wp-content/themes/base/dist/'),
     filename: 'script.js'
@@ -38,17 +79,7 @@ module.exports = {
   }
 };
 
-//////////////////////////////////////////
-3. In your package.json, add a new script for webpack:
-
-//////////////////////////////////////////
-package.json
-
-"scripts": {
-  "build": "webpack --watch"
-}
-
-//////////////////////////////////////////
+///////////////////////////////////////
 
 Usage
 Run the script by running the command npm run build

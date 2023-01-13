@@ -150,7 +150,7 @@ function base_scripts() {
 add_action( 'wp_enqueue_scripts', 'base_scripts' );
 
 function transpile_js() {
-	wp_enqueue_script('script', get_template_directory_uri(). '/dist/script.js', array(), '1.0.0', true );
+	wp_enqueue_script('script', get_template_directory_uri(). '/dist/script.js', array(), '1.0.0', true, 'module' );
 }
 add_action( 'wp_enqueue_scripts', 'transpile_js' );
 /**
